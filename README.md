@@ -1,5 +1,5 @@
 # simple-python-bot
-This is a simple bot that answers questions you ask it. It is meant to become advacned enough to take over some of the customer services tasks that businesses have. 
+This is a simple bot that answers questions you ask it. It is meant to help businesses with their customer service. 
 
 Created by Sam Ryan
 
