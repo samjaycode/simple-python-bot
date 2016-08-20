@@ -19,19 +19,23 @@ def bot(sentence) :
     welcomeDict = ['hello', 'hi', 'welcome', 'hey', 'whats up' ] # creating a welcome dictionary
     healthDict = ['how', 'hows', 'are', 'you', 'hey', 'whats', 'up' ] # creating a asking how you are doing dictionary
     payoutDict = ['payout', 'payment', 'pay', 'money', 'my', ] # dictionary for payment
+    pricingDict = ['cost', 'pricing', 'price'] # dictionary for pricing
    
     #checks for any common values
     welcomeResult = len(set(welcomeDict).intersection(sentence))
     healthResult = len(set(healthDict).intersection(sentence))
     payoutResult = len(set(payoutDict).intersection(sentence))
-  
+    pricingResult = len(set(pricingDict).intersection(sentence))
+   
     botResponse = [] # creates a list
 
     if welcomeResult > 0:
         botResponse.append('Hello back. How can I help? ')
     if healthResult > 1 :
 	 botResponse.append('I am well, thanks! ')
-    if payoutResult > 1 :
+    if pricingResult > 0 :
+	 botResponse.append('Logo contests cost $100. You can see a list of all the pricing on our pricing page ')
+    if payoutResult > 0 :
 	 botResponse.append('We make the payout on the 1st. ')
 
     botResponse.append('If you still have any questions send us an email. ')
@@ -40,5 +44,5 @@ def bot(sentence) :
     
     return finalBotResponse # final response from bot
 
-print bot('How are you. I need my payout')
+print bot('how much does a contest cost?')
 
