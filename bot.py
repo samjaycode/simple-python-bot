@@ -4,7 +4,13 @@
 
 #python bot - pybot
 
-def bot(sentence) :
+def bot() :
+    
+    name = raw_input('Hi, I\'m Snappy! What is your name? ')
+    
+    email = raw_input('Right on, ' + name + '! What\'s your email? ')
+
+    sentence = raw_input('' + email + '.. sweet email! How can I help? ') # asks the question
     
     unwantedChars = "!@#$?,." #unwanted chars are removed
 
@@ -26,23 +32,34 @@ def bot(sentence) :
     healthResult = len(set(healthDict).intersection(sentence))
     payoutResult = len(set(payoutDict).intersection(sentence))
     pricingResult = len(set(pricingDict).intersection(sentence))
-   
+
     botResponse = [] # creates a list
 
-    if welcomeResult > 0:
-        botResponse.append('Hello back. How can I help? ')
-    if healthResult > 1 :
-	 botResponse.append('I am well, thanks! ')
-    if pricingResult > 0 :
-	 botResponse.append('Logo contests cost $100. You can see a list of all the pricing on our pricing page ')
-    if payoutResult > 0 :
-	 botResponse.append('We make the payout on the 1st. ')
+    responseCount = 0 # creates a list
 
-    botResponse.append('If you still have any questions send us an email. ')
-    
+    botResponse.append(name + ', ')
+
+    #checks to see if the bot can answer
+    if welcomeResult > 0:
+        botResponse.append('how can I help? ')
+        responseCount += 1
+    if healthResult > 1 :
+	    botResponse.append('I am well, thanks! ')
+    if pricingResult > 0 :
+        botResponse.append('logo contests cost $100. You can see a list of all the pricing on our pricing page ')
+        responseCount += 1
+    if payoutResult > 0 :
+	    botResponse.append('we make the payout on the 1st. ')
+
+    # checks to see if the bot answered any questions
+    if(responseCount or payoutResult != 0 or healthResult != 0): #if the bot did answer
+        botResponse.append('if you still have any questions send us an email. ')
+    else: # if it doesn't answer
+        botResponse.append('we will get back to you shortly with an answer. ')
+
     finalBotResponse = ''.join(botResponse) # joins the array into a string
     
     return finalBotResponse # final response from bot
 
-print bot('how much does a contest cost?')
+print bot()
 
